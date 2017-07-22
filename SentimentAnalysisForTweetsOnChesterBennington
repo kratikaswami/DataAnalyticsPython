@@ -1,0 +1,20 @@
+import tweepy
+from textblob import TextBlob
+
+#twitter application details.
+consumer_key = 'Dxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+consumer_secret = 'jxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxG'
+
+access_secret = '7xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+access_token_secret = 'xXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXL'
+
+auth = tweepy.OAuthHandler(consumer_key,consumer_secret)
+auth.set_access_token(access_secret,access_token_secret)
+
+api = tweepy.API(auth)
+
+public_tweets = api.search('Chester Bennington')
+for tweet in public_tweets:
+     print(tweet.text)
+     analysis = TextBlob(tweet.text)
+     print(analysis.sentiment)
